@@ -36,5 +36,12 @@ namespace UnitTest
 			Tuple point = CreatePoint(4, -4, 3);
 			Assert::IsTrue(t1 == point);
 		}
+
+		TEST_METHOD(TestCreateVector)
+		{
+			Tuple t1 = Tuple(4, -4, 3, 0);
+			Tuple vector = CreateVector(4, -4, 3);
+			Assert::IsTrue(t1 == vector);
+		}
 	};
 }
