@@ -24,5 +24,9 @@ Tuple AddTuple(Tuple t1, Tuple t2);
 Tuple SubtractTuple(Tuple t1, Tuple t2);
 Tuple MultiplyTuple(Tuple t1, double scalar);
 Tuple DivideTuple(Tuple t1, double scalar);
+double Magnitude(Tuple t1);
+Tuple Normalize(Tuple t1);
+double DotProduct(Tuple t1, Tuple t2);
+Tuple CrossProduct(Tuple t1, Tuple t2);
 
 #endif // TUPLE_H
