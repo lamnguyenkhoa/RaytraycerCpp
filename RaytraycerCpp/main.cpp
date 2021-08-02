@@ -1,12 +1,24 @@
 #include <iostream>
 #include <string>
+#include "PutItTogether.h"
+
 
 int main() {
-	std::string input = "";
-	std::cout << "Hello World" << std::endl;
-	std::cout << "Please put in some input: ";
-	std::getline(std::cin, input);
-	std::cout << "Your input: " + input << std::endl;
-	std::cout << "Press any key to exit...";
+	int chapterNum;
+	std::cout << "Hello Bro!" << std::endl;
+	std::cout << "Please choose which chapter PIT program: ";
+	std::cin >> chapterNum;
+	std::cout << "Your input: " << chapterNum << std::endl;
+	switch (chapterNum) {
+		case 1:
+			PITChapter1();
+			break;
+		case 2:
+			PITChapter2();
+			break;
+		default:
+			std::cout << "Yo man, that chapter not exist!" << std::endl;
+	}
+	std::cout << "Press Enter to exit..." << std::endl;
 	std::cin.get();
 }

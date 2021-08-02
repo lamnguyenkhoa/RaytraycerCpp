@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 #include "../RaytraycerCpp/Tuple.cpp"
+#include "../RaytraycerCpp/Point.cpp"
+#include "../RaytraycerCpp/Vector.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -30,14 +32,14 @@ namespace UnitTest
 
 		TEST_METHOD(TestCreatePoint) {
 			Tuple t1 = Tuple(4, -4, 3, 1);
-			Tuple point = CreatePoint(4, -4, 3);
-			Assert::IsTrue(t1 == point);
+			Point p1 = Point(4, -4, 3);
+			Assert::IsTrue(t1 == p1);
 		}
 
 		TEST_METHOD(TestCreateVector) {
 			Tuple t1 = Tuple(4, -4, 3, 0);
-			Tuple vector = CreateVector(4, -4, 3);
-			Assert::IsTrue(t1 == vector);
+			Vector v1 = Vector(4, -4, 3);
+			Assert::IsTrue(t1 == v1);
 		}
 
 		TEST_METHOD(TestAdd) {

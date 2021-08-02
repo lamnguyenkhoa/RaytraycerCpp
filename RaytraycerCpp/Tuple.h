@@ -4,17 +4,16 @@
 #define TUPLE_H
 
 class Tuple {
-	public:
-		double x;
-		double y;
-		double z;
-		double w;
+public:
+	double x;
+	double y;
+	double z;
+	double w;
 
-		Tuple(double x, double y, double z, double w);
-		bool IsItVector();
-		Tuple Negate();
-		
-
+	Tuple();
+	Tuple(double x, double y, double z, double w);
+	bool IsItVector();
+	Tuple Negate();
 };
 
 bool operator== (const Tuple t1, const Tuple t2);

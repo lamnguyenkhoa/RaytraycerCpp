@@ -2,6 +2,13 @@
 #include <cmath>
 #include <iostream>
 
+Tuple::Tuple() {
+	this->x = 0;
+	this->y = 0;
+	this->z = 0;
+	this->w = 0;
+}
+
 Tuple::Tuple(double x, double y, double z, double w) {
 	this->x = x;
 	this->y = y;
@@ -32,7 +39,7 @@ bool operator==(const Tuple t1, const Tuple t2)
 	if (abs(t1.x - t2.x) <= 0 && 
 		abs(t1.y - t2.y) <= 0 && 
 		abs(t1.z - t2.z) <= 0 && 
-		abs(t1.w - t2.w) <=0) 
+		abs(t1.w - t2.w) <= 0) 
 		return true;
 	else return false;
 }
