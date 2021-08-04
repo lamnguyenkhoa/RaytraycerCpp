@@ -2,30 +2,38 @@
 #include <iostream>
 #include "PutItTogether.h"
 #include "Tuple.h"
+#include "Point.h"
+#include "Vector.h"
 
 //-----------------Chapter 1-----------------------
 
 class Projectile {
 public:
-	Tuple point;
-	Tuple velocity;
+	Point position;
+	Vector velocity;
 
-	Projectile(Tuple p, Tuple v) {
-		this->point = p;
+	Projectile(Point p, Vector v) {
+		this->position = p;
 		this->velocity = v;
 	}
 };
 
 class Environment {
 public:
-	Tuple gravity;
-	Tuple wind;
+	Vector gravity;
+	Vector wind;
 
-	Environment(Tuple g, Tuple w) {
+	Environment(Vector g, Vector w) {
 		this->gravity = g;
 		this->wind = w;
 	}
 };
+
+Projectile Tick(Environment env, Projectile proj) {
+	Point newPosition = proj.position + proj.velocity;
+	Vector newVelocity = proj.velocity + env.gravity + env.wind;
+	return Projectile(newPosition, newVelocity);
+}
 
 void PITChapter1() {
 	std::cout << "Yo you just run the program 1!" << std::endl;
