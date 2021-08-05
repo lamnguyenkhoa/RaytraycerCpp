@@ -34,6 +34,14 @@ Tuple Tuple::Negate()
 	return *this;
 }
 
+std::string Tuple::toString() const
+{
+	return "(" + std::to_string(this->x) + "," +
+		std::to_string(this->y) + "," +
+		std::to_string(this->z) + "," +
+		std::to_string(this->w) + ")";
+}
+
 bool operator==(const Tuple t1, const Tuple t2)
 {
 	if (abs(t1.x - t2.x) <= 0 && 

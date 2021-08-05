@@ -10,6 +10,7 @@ class Point : public Tuple {
 public:
 	Point();
 	Point(double x, double y, double z);
+	std::string toString() const;
 };
 
 Point operator+(const Point p, const Vector v);

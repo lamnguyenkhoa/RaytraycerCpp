@@ -8,7 +8,6 @@ int main() {
 	std::cout << "Hello Bro!" << std::endl;
 	std::cout << "Please choose which chapter PIT program: ";
 	std::cin >> chapterNum;
-	std::cout << "Your input: " << chapterNum << std::endl;
 	switch (chapterNum) {
 		case 1:
 			PITChapter1();

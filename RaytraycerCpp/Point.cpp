@@ -14,6 +14,13 @@ Point::Point(double x, double y, double z) {
 	this->w = 1;
 }
 
+std::string Point::toString() const
+{
+	return "(" + std::to_string(this->x) + "," +
+		std::to_string(this->y) + "," +
+		std::to_string(this->z) + ")";
+}
+
 Point operator+(const Point p, const Vector v) {
 	return Point(p.x + v.x, p.y + v.y, p.z + v.z);
 }

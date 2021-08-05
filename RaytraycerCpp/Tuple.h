@@ -3,6 +3,8 @@
 #ifndef TUPLE_H
 #define TUPLE_H
 
+#include <string>
+
 class Tuple {
 public:
 	double x;
@@ -14,6 +16,7 @@ public:
 	Tuple(double x, double y, double z, double w);
 	bool IsItVector();
 	Tuple Negate();
+	std::string toString() const;
 };
 
 bool operator== (const Tuple t1, const Tuple t2);
