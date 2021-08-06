@@ -16,16 +16,22 @@ public:
 	Tuple(double x, double y, double z, double w);
 	bool IsItVector();
 	Tuple Negate();
-	std::string toString() const;
+	std::string ToString() const;
+	double Magnitude();
+	Tuple Normalize();
+	double DotProduct(Tuple other);
+	Tuple CrossProduct(Tuple other);
 };
 
+Tuple Vector();
+Tuple Vector(double x, double y, double z);
+Tuple Point();
+Tuple Point(double x, double y, double z);
 bool operator== (const Tuple t1, const Tuple t2);
 Tuple operator+ (const Tuple t1, const Tuple t2);
 Tuple operator- (const Tuple t1, const Tuple t2);
+Tuple operator- (const Tuple neg);
 Tuple operator* (const Tuple t1, const double scalar);
 Tuple operator/ (const Tuple t1, const double scalar);
-double Magnitude(Tuple t1);
-Tuple Normalize(Tuple t1);
-double DotProduct(Tuple t1, Tuple t2);
 
 #endif // TUPLE_H

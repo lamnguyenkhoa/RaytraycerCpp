@@ -2,17 +2,14 @@
 #include <iostream>
 #include "PutItTogether.h"
 #include "Tuple.h"
-#include "Point.h"
-#include "Vector.h"
-
 
 //-----------------Chapter 1---------------------------------------
 class Projectile {
 public:
-	Point position;
-	Vector velocity;
+	Tuple position;
+	Tuple velocity;
 
-	Projectile(Point p, Vector v) {
+	Projectile(Tuple p, Tuple v) {
 		this->position = p;
 		this->velocity = v;
 	}
@@ -20,18 +17,18 @@ public:
 
 class Environment {
 public:
-	Vector gravity;
-	Vector wind;
+	Tuple gravity;
+	Tuple wind;
 
-	Environment(Vector g, Vector w) {
+	Environment(Tuple g, Tuple w) {
 		this->gravity = g;
 		this->wind = w;
 	}
 };
 
 Projectile Tick(Environment env, Projectile proj) {
-	Point newPosition = proj.position + proj.velocity;
-	Vector newVelocity = proj.velocity + env.gravity + env.wind;
+	Tuple newPosition = proj.position + proj.velocity;
+	Tuple newVelocity = proj.velocity + env.gravity + env.wind;
 	return Projectile(newPosition, newVelocity);
 }
 
@@ -39,21 +36,21 @@ void PITChapter1() {
 	std::cout << "========================================" << std::endl;
 	std::cout << "Program 1: Canon simulator." << std::endl;
 	// Init
-	Projectile p = Projectile(Point(0, 1, 0), Normalize(Vector(1, 1, 0)));
+	Projectile p = Projectile(Point(0, 1, 0), Vector(1, 1, 0).Normalize());
 	Environment e = Environment(Vector(0, -0.1, 0), Vector(-0.01, 0, 0));
 	int tickCount = 0;
 	std::cout << "Projectile: " << std::endl;
-	std::cout << "Start: " << p.position.toString() <<" | Velocity: " << p.velocity.toString() << std::endl;
+	std::cout << "Start: " << p.position.ToString() <<" | Velocity: " << p.velocity.ToString() << std::endl;
 	std::cout << "Environment: " << std::endl;
-	std::cout << "Gravity: " << e.gravity.toString() << " | Wind: " << e.wind.toString() << std::endl;
+	std::cout << "Gravity: " << e.gravity.ToString() << " | Wind: " << e.wind.ToString() << std::endl;
 	std::cout << "========================================" << std::endl;
 
 	// Loop
-	std::cout << "Tick " << tickCount << ": " << p.position.toString() << std::endl;
+	std::cout << "Tick " << tickCount << ": " << p.position.ToString() << std::endl;
 	while (p.position.y > 0) {
 		p = Tick(e, p);
 		tickCount++;
-		std::cout << "Tick " << tickCount << ": " << p.position.toString() << std::endl;
+		std::cout << "Tick " << tickCount << ": " << p.position.ToString() << std::endl;
 	}
 	std::cout << "The projectile hit the ground!" << std::endl;
 }

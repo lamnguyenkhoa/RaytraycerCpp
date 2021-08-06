@@ -1,14 +1,13 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 #include "../RaytraycerCpp/Tuple.cpp"
-#include "../RaytraycerCpp/Point.cpp"
-#include "../RaytraycerCpp/Vector.cpp"
+#include "../RaytraycerCpp/Tuple.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace UnitTest
 {
-	TEST_CLASS(TestChapterOne)
+	TEST_CLASS(TestChapter1)
 	{
 	public:
 		
@@ -32,13 +31,13 @@ namespace UnitTest
 
 		TEST_METHOD(TestCreatePoint) {
 			Tuple t1 = Tuple(4, -4, 3, 1);
-			Point p1 = Point(4, -4, 3);
+			Tuple p1 = Point(4, -4, 3);
 			Assert::IsTrue(t1 == p1);
 		}
 
 		TEST_METHOD(TestCreateVector) {
 			Tuple t1 = Tuple(4, -4, 3, 0);
-			Vector v1 = Vector(4, -4, 3);
+			Tuple v1 = Vector(4, -4, 3);
 			Assert::IsTrue(t1 == v1);
 		}
 
@@ -49,11 +48,11 @@ namespace UnitTest
 		}
 
 		TEST_METHOD(TestSubtract) {
-			Point p = Point(3, 2, 1);
-			Vector v = Vector(5, 6, 7);
+			Tuple p = Point(3, 2, 1);
+			Tuple v = Vector(5, 6, 7);
 			Assert::IsTrue(p - v == Point(-2, -4, -6));
-			Vector v1 = Vector(0, 0, 0);
-			Vector v2 = Vector(1, -2, 3);
+			Tuple v1 = Vector(0, 0, 0);
+			Tuple v2 = Vector(1, -2, 3);
 			Assert::IsTrue(v1 - v2 == Vector(-1, 2, -3));
 		}
 
@@ -76,34 +75,34 @@ namespace UnitTest
 		}
 
 		TEST_METHOD(TestMagnitude) {
-			Vector v1 = Vector(0, 1, 0);
-			Assert::IsTrue(abs(Magnitude(v1) - 1) <= 0);
-			Vector v2 = Vector(0, 0, 1);
-			Assert::IsTrue(abs(Magnitude(v2) - 1) <= 0);
-			Vector v3 = Vector(1, 2, 3);
-			Assert::IsTrue(abs(Magnitude(v3) - sqrt(14)) <= 0);
-			Vector v4 = Vector(-1, -2, -3);
-			Assert::IsTrue(abs(Magnitude(v4) - sqrt(14)) <= 0);
+			Tuple v1 = Vector(0, 1, 0);
+			Assert::IsTrue(abs(v1.Magnitude() - 1) <= 0);
+			Tuple v2 = Vector(0, 0, 1);
+			Assert::IsTrue(abs(v2.Magnitude() - 1) <= 0);
+			Tuple v3 = Vector(1, 2, 3);
+			Assert::IsTrue(abs(v3.Magnitude() - sqrt(14)) <= 0);
+			Tuple v4 = Vector(-1, -2, -3);
+			Assert::IsTrue(abs(v4.Magnitude() - sqrt(14)) <= 0);
 		}
 
 		TEST_METHOD(TestNormalize) {
-			Vector v1 = Vector(4, 0, 0);
-			Assert::IsTrue(Normalize(v1) == Vector(1, 0, 0));
-			Vector v2 = Vector(1, 2, 3);
-			Assert::IsTrue(Normalize(v2) == Vector(1/sqrt(14), 2/sqrt(14), 3/sqrt(14)));
+			Tuple v1 = Vector(4, 0, 0);
+			Assert::IsTrue(v1.Normalize() == Vector(1, 0, 0));
+			Tuple v2 = Vector(1, 2, 3);
+			Assert::IsTrue(v2.Normalize() == Vector(1/sqrt(14), 2/sqrt(14), 3/sqrt(14)));
 		}
 
 		TEST_METHOD(TestDotProduct) {
-			Vector v1 = Vector(1, 2, 3);
-			Vector v2 = Vector(2, 3, 4);
-			Assert::AreEqual(DotProduct(v1, v2), 20.0);
+			Tuple v1 = Vector(1, 2, 3);
+			Tuple v2 = Vector(2, 3, 4);
+			Assert::AreEqual(v1.DotProduct(v2), 20.0);
 		}
 
 		TEST_METHOD(TestCrossProduct) {
-			Vector v1 = Vector(1, 2, 3);
-			Vector v2 = Vector(2, 3, 4);
-			Assert::IsTrue(CrossProduct(v1, v2) == Vector(-1, 2, -1));
-			Assert::IsTrue(CrossProduct(v2, v1) == Vector(1, -2, 1));
+			Tuple v1 = Vector(1, 2, 3);
+			Tuple v2 = Vector(2, 3, 4);
+			Assert::IsTrue(v1.CrossProduct(v2) == Vector(-1, 2, -1));
+			Assert::IsTrue(v2.CrossProduct(v1) == Vector(1, -2, 1));
 		}
 	};
 }
