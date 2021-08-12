@@ -17,6 +17,7 @@ public:
 	bool IsItVector();
 	Tuple Negate();
 	std::string ToString() const;
+	double MagnitudeSq();
 	double Magnitude();
 	Tuple Normalize();
 	double DotProduct(Tuple other);
@@ -31,7 +32,8 @@ bool operator== (const Tuple t1, const Tuple t2);
 Tuple operator+ (const Tuple t1, const Tuple t2);
 Tuple operator- (const Tuple t1, const Tuple t2);
 Tuple operator- (const Tuple neg);
-Tuple operator* (const Tuple t1, const double scalar);
-Tuple operator/ (const Tuple t1, const double scalar);
+Tuple operator* (const Tuple t, const double scalar);
+Tuple operator* (const double scalar, const Tuple t);
+Tuple operator/ (const Tuple t, const double scalar);
 
 #endif // TUPLE_H

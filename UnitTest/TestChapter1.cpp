@@ -65,7 +65,7 @@ namespace UnitTest
 			Tuple t1 = Tuple(1, -2, 3, -4);
 			Assert::IsTrue(t1 * 3.5 == Tuple(3.5, -7, 10.5, -14));
 			Tuple t2 = Tuple(1, -2, 3, -4);
-			Assert::IsTrue(t1 * 0.5 == Tuple(0.5, -1, 1.5, -2));
+			Assert::IsTrue(0.5 * t2 == Tuple(0.5, -1, 1.5, -2));
 		}
 
 		TEST_METHOD(TestDivide) {

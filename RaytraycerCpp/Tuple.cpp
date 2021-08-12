@@ -42,10 +42,15 @@ std::string Tuple::ToString() const
 		std::to_string(this->z) + ")";
 }
 
+// Square-root operation is expensive so we use this function when need the squared magnitude
+double Tuple::MagnitudeSq() {
+	double magSq = pow(this->x, 2) + pow(this->y, 2) + pow(this->z, 2) + pow(this->w, 2);
+	return magSq;
+}
+
 double Tuple::Magnitude() {
-	double mag = pow(this->x, 2) + pow(this->y, 2) + pow(this->z, 2) + pow(this->w, 2);
-	mag = sqrt(mag);
-	return mag;
+	double magSq = this->MagnitudeSq();
+	return sqrt(magSq);
 }
 
 Tuple Tuple::Normalize() {
@@ -61,16 +66,6 @@ Tuple Tuple::CrossProduct(Tuple other) {
 	return Vector(this->y * other.z - this->z * other.y,
 		this->z * other.x - this->x * other.z,
 		this->x * other.y - this->y * other.x);
-}
-
-bool operator==(const Tuple t1, const Tuple t2)
-{
-	if (abs(t1.x - t2.x) <= 0 &&
-		abs(t1.y - t2.y) <= 0 &&
-		abs(t1.z - t2.z) <= 0 &&
-		abs(t1.w - t2.w) <= 0)
-		return true;
-	else return false;
 }
 
 Tuple Vector() {
@@ -89,6 +84,16 @@ Tuple Point(double x, double y, double z) {
 	return Tuple(x, y, z, 1);
 }
 
+bool operator==(const Tuple t1, const Tuple t2)
+{
+	if (abs(t1.x - t2.x) <= 0 &&
+		abs(t1.y - t2.y) <= 0 &&
+		abs(t1.z - t2.z) <= 0 &&
+		abs(t1.w - t2.w) <= 0)
+		return true;
+	else return false;
+}
+
 Tuple operator+(const Tuple t1, const Tuple t2)
 {
 	return Tuple(t1.x + t2.x, t1.y + t2.y, t1.z + t2.z, t1.w + t2.w);
@@ -104,6 +109,11 @@ Tuple operator-(const Tuple neg) {
 }
 
 Tuple operator*(const Tuple t, const double s)
+{
+	return Tuple(t.x * s, t.y * s, t.z * s, t.w * s);
+}
+
+Tuple operator*(const double s, const Tuple t)
 {
 	return Tuple(t.x * s, t.y * s, t.z * s, t.w * s);
 }
